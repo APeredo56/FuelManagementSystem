@@ -1,0 +1,52 @@
+{
+  "hash": "40a1f3e3",
+  "configHash": "0e167a3c",
+  "lockfileHash": "e63de564",
+  "browserHash": "517c3677",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "332e84b4",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "1c278655",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "c06529a6",
+      "needsInterop": false
+    },
+    "@material-tailwind/react": {
+      "src": "../../node_modules/@material-tailwind/react/index.js",
+      "file": "@material-tailwind_react.js",
+      "fileHash": "a1090e74",
+      "needsInterop": true
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "5f983045",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-7C7BNZH5": {
+      "file": "chunk-7C7BNZH5.js"
+    },
+    "chunk-KTULTRWJ": {
+      "file": "chunk-KTULTRWJ.js"
+    },
+    "chunk-65KY755N": {
+      "file": "chunk-65KY755N.js"
+    },
+    "chunk-V4OQ3NZ2": {
+      "file": "chunk-V4OQ3NZ2.js"
+    }
+  }
+}
