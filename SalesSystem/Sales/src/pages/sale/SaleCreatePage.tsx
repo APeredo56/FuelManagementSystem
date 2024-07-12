@@ -254,7 +254,7 @@ const SaleCreatePage = () => {
                                 return (
                                     <>
                                         <p>{selectedStock.fuel_type?.name}</p>
-                                        <p>{selectedStock.quantity} lt</p>
+                                        <p>{selectedStock.quantity} L</p>
                                     </>
                                 );
                             }

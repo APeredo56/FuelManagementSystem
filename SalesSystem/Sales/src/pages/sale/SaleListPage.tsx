@@ -65,7 +65,7 @@ const SaleListPage = () => {
                         <td className="ps-3 pt-2">{sale.nit}</td>
                         <td className="ps-3 pt-2">{sale.pump?.code}</td>
                         <td className="ps-3 pt-2">{sale.fuel_type?.name}</td>
-                        <td className="ps-3 pt-2">{sale.fuel_quantity} lt</td>
+                        <td className="ps-3 pt-2">{sale.fuel_quantity} L</td>
                         <td className="ps-3 pt-2">{sale.fuel_quantity} Bs</td>
                         <td className="ps-3 pt-2">{getFormattedDate(sale.date!)}</td>
                         <td className="ps-3 pt-2">{sale.client?.name + " " + sale.client?.last_name}</td>

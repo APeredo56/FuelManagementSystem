@@ -18,13 +18,12 @@ class FuelTypeSerializer(serializers.ModelSerializer):
 class FuelTypeViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
     queryset = FuelType.objects.all()
     serializer_class = FuelTypeSerializer
-    permission_classes = [IsAuthenticated]
     permission_classes_per_method = {
         'create': [CanAddFuelType],
         'update': [CanEditFuelType],
         'partial_update': [CanEditFuelType],
         'destroy': [CanDeleteFuelType],
-        'list': [CanViewFuelType],
+        'list': [],
         'retrieve': [CanViewFuelType],
     }
 

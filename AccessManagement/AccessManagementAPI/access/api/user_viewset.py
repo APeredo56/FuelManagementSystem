@@ -10,6 +10,7 @@ from access.api import StationSerializer
 from access.models import UserProfile, Station
 from access.permissions import PermissionPolicyMixin
 from access.permissions.is_access_manager import IsAccessManager
+from access.permissions.user_permissions import CanViewUsers
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -37,6 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
         with transaction.atomic():
             user = User.objects.create(password=hashed_password, **validated_data)
             UserProfile.objects.create(user=user, **profile_data)
+            user.groups.add(profile_data.get('role'))
         return user
 
     def update(self, instance, validated_data):
@@ -56,13 +58,23 @@ class UserSerializer(serializers.ModelSerializer):
                 instance.userprofile.station = None
                 instance.userprofile.save()
 
+            instance.groups.add(profile_data.get('role'))
+
         return instance
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAccessManager]
+    permission_classes = [IsAuthenticated]
+    permission_classes_per_method = {
+        'create': [IsAccessManager],
+        'update': [IsAccessManager],
+        'partial_update': [IsAccessManager],
+        'destroy': [IsAccessManager],
+        'list': [IsAccessManager],
+        'retrieve': [IsAccessManager],
+    }
 
     @action(detail=False, methods=['get'], url_path='me', url_name='me',
             permission_classes=[IsAuthenticated])
@@ -76,3 +88,10 @@ class UserViewSet(viewsets.ModelViewSet):
     def roles(self, request):
         roles = Group.objects.all()
         return Response([{"id": role.id, "name": role.name} for role in roles])
+
+    @action(detail=False, methods=['get'], url_path='drivers', url_name='drivers',
+            permission_classes=[CanViewUsers])
+    def get_drivers(self, request):
+        drivers = User.objects.filter(groups__name='Conductor')
+        serializer = self.get_serializer(drivers, many=True)
+        return Response(serializer.data)

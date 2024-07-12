@@ -6,11 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sales', '0002_init_roles'),
+        ('refinery', '0002_init_roles'),
     ]
 
     def insertData(apps, schema_editor):
-        FuelType = apps.get_model('sales', 'FuelType')
+        FuelType = apps.get_model('refinery', 'FuelType')
         fuel_types = [
             FuelType(name='Gasolina Especial'),
             FuelType(name='Gasolina Premium'),

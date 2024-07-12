@@ -17,7 +17,7 @@ def main():
         ) from exc
     try:
         if sys.argv[1] == 'runserver' and len(sys.argv) == 2:
-            sys.argv.append('8001')  # Cambia el puerto aquí
+            sys.argv.append('8001')
     except IndexError:
         pass
     execute_from_command_line(sys.argv)

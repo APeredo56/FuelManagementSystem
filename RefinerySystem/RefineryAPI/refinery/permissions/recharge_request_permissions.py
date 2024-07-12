@@ -1,21 +1,21 @@
 from rest_framework.permissions import BasePermission
 
 
-class CanViewTruck(BasePermission):
+class CanViewRechargeRequest(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.has_perm('view_truck')
+        return request.user and request.user.has_perm('view_rechargerequest')
 
 
-class CanAddTruck(BasePermission):
+class CanAddRechargeRequest(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.has_perm('add_truck')
+        return request.user and request.user.has_perm('add_rechargerequest')
 
 
-class CanEditTruck(BasePermission):
+class CanEditRechargeRequest(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.has_perm('change_truck')
+        return request.user and request.user.has_perm('change_rechargerequest')
 
 
-class CanDeleteTruck(BasePermission):
+class CanDeleteRechargeRequest(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.has_perm('delete_truck')
+        return request.user and request.user.has_perm('delete_rechargerequest')

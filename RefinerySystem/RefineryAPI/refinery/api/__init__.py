@@ -1,7 +1,5 @@
-from .simple_serializers import AddFuelTypesSerializer
 from .fuel_type_viewset import FuelTypeViewSet, FuelTypeSerializer
-from .station_viewset import StationViewSet, StationSerializer
-from .fuel_stock_viewset import FuelStockViewSet, FuelStockSerializer
-from .pump_viewset import PumpViewSet, PumpSerializer
-from .client_viewset import ClientViewSet, ClientSerializer
-from .sale_viewset import SaleViewSet, SaleSerializer
+from .truck_viewset import TruckViewSet, TruckSerializer
+from .route_viewset import RouteViewSet, RouteSerializer
+from .recharge_request_viewset import RechargeRequestViewSet, RechargeRequestSerializer
+

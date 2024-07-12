@@ -74,9 +74,20 @@ class Migration(migrations.Migration):
             view_client, add_client,
         ]
 
+        driver_permissions = [
+            view_station,
+            change_fueltype,
+        ]
+
+        refinery_manager_permissions = [
+            view_station,
+        ]
+
         access_manager_group.permissions.set(access_manager_permissions)
         station_manager_group.permissions.set(station_manager_permissions)
         salesperson_group.permissions.set(salesperson_permissions)
+        driver_group.permissions.set(driver_permissions)
+        refinery_manager_group.permissions.set(refinery_manager_permissions)
 
     operations = [
         migrations.RunPython(insertData),

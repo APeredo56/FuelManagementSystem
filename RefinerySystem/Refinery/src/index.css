@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('assets/images/background.jpg');
+    background-size: cover;
+    overflow: auto;
+    color: white;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 5px !important;
+    border-radius: 25px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: rgba(244, 244, 244, 0.089) !important;
+    border-radius: 25px;
+    margin: 0;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(163, 161, 161, 0.89) !important;
+    border-radius: 25px;
+}

@@ -50,7 +50,12 @@ class Migration(migrations.Migration):
             delete_station,
             view_station,
         ]
+        refinery_manager_permissions = [
+            view_user,
+        ]
+
         access_manager_group.permissions.set(access_manager_permissions)
+        refinery_manager_group.permissions.set(refinery_manager_permissions)
 
         admin_user = User(
             username='admin@admin.com',
@@ -64,6 +69,20 @@ class Migration(migrations.Migration):
         admin_user.save()
         user_profile = UserProfile(user=admin_user, phone='1234567890')
         user_profile.role = access_manager_group
+        user_profile.save()
+
+        fuel_user = User(
+            username='fuel',
+            password=make_password('fuel'),
+            first_name='fuel',
+            last_name='user',
+            is_superuser=True,
+            is_staff=True,
+        )
+        fuel_user.save()
+
+        refinery_manager_group = Group.objects.get(name='Administrador de Refinería')
+        user_profile = UserProfile(user=fuel_user, role=refinery_manager_group)
         user_profile.save()
 
     operations = [

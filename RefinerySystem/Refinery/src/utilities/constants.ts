@@ -1,0 +1,7 @@
+export const ROLE_IDS = {
+    ACCESS_MANAGER: 1,
+    STATION_MANAGER: 2,
+    REFINERY_MANAGER: 3,
+    SALESPERSON: 4,
+    DRIVER: 5,
+};

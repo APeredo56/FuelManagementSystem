@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sales', '0001_initial'),
+        ('refinery', '0001_initial'),
         ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
@@ -29,54 +29,41 @@ class Migration(migrations.Migration):
         driver_group = Group(name='Conductor')
         driver_group.save()
 
-        add_station = Permission.objects.get(codename='add_station')
-        change_station = Permission.objects.get(codename='change_station')
-        delete_station = Permission.objects.get(codename='delete_station')
-        view_station = Permission.objects.get(codename='view_station')
+        add_truck = Permission.objects.get(codename='add_truck')
+        change_truck = Permission.objects.get(codename='change_truck')
+        delete_truck = Permission.objects.get(codename='delete_truck')
+        view_truck = Permission.objects.get(codename='view_truck')
 
-        add_pump = Permission.objects.get(codename='add_pump')
-        change_pump = Permission.objects.get(codename='change_pump')
-        delete_pump = Permission.objects.get(codename='delete_pump')
-        view_pump = Permission.objects.get(codename='view_pump')
+        add_route = Permission.objects.get(codename='add_route')
+        change_route = Permission.objects.get(codename='change_route')
+        delete_route = Permission.objects.get(codename='delete_route')
+        view_route = Permission.objects.get(codename='view_route')
 
         add_fueltype = Permission.objects.get(codename='add_fueltype')
         change_fueltype = Permission.objects.get(codename='change_fueltype')
         delete_fueltype = Permission.objects.get(codename='delete_fueltype')
         view_fueltype = Permission.objects.get(codename='view_fueltype')
 
-        add_sale = Permission.objects.get(codename='add_sale')
-        view_sale = Permission.objects.get(codename='view_sale')
+        add_rechargerequest = Permission.objects.get(codename='add_rechargerequest')
+        change_rechargerequest = Permission.objects.get(codename='change_rechargerequest')
+        delete_rechargerequest = Permission.objects.get(codename='delete_rechargerequest')
+        view_rechargerequest = Permission.objects.get(codename='view_rechargerequest')
 
-        add_client = Permission.objects.get(codename='add_client')
-        change_client = Permission.objects.get(codename='change_client')
-        delete_client = Permission.objects.get(codename='delete_client')
-        view_client = Permission.objects.get(codename='view_client')
-
-        access_manager_permissions = [
-            add_station,
-            change_station,
-            delete_station,
-            view_station,
-        ]
-
-        station_manager_permissions = [
-            view_station,
-            add_pump, change_pump, delete_pump, view_pump,
+        refinery_manager_permissions = [
+            add_truck, change_truck, delete_truck, view_truck,
+            add_route, change_route, delete_route, view_route,
             add_fueltype, change_fueltype, delete_fueltype, view_fueltype,
-            view_sale, add_fueltype,
-            add_client, change_client, delete_client, view_client,
+            add_rechargerequest, change_rechargerequest, delete_rechargerequest, view_rechargerequest,
         ]
 
-        salesperson_permissions = [
-            view_sale,
-            add_sale,
-            view_station,
-            view_client, add_client,
+        driver_permissions = [
+            view_route,
+            view_rechargerequest, change_rechargerequest,
+            view_truck,
         ]
 
-        access_manager_group.permissions.set(access_manager_permissions)
-        station_manager_group.permissions.set(station_manager_permissions)
-        salesperson_group.permissions.set(salesperson_permissions)
+        refinery_manager_group.permissions.set(refinery_manager_permissions)
+        driver_group.permissions.set(driver_permissions)
 
     operations = [
         migrations.RunPython(insertData),

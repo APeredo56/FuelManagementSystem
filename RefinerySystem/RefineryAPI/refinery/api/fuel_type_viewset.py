@@ -4,9 +4,9 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from sales.models import FuelType, Station
-from sales.permissions import PermissionPolicyMixin
-from sales.permissions.fuel_type_permissions import CanAddFuelType, CanEditFuelType, CanDeleteFuelType, CanViewFuelType
+from refinery.models import FuelType
+from refinery.permissions import PermissionPolicyMixin
+from refinery.permissions.fuel_type_permissions import CanAddFuelType, CanEditFuelType, CanDeleteFuelType, CanViewFuelType
 
 
 class FuelTypeSerializer(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class FuelTypeViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
         'update': [CanEditFuelType],
         'partial_update': [CanEditFuelType],
         'destroy': [CanDeleteFuelType],
-        'list': [],
+        'list': [CanViewFuelType],
         'retrieve': [CanViewFuelType],
     }
 
